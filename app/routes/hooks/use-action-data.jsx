@@ -1,7 +1,17 @@
-import { Form, useActionData } from "@remix-run/react"
+import { Form, useActionData, useTransition } from "@remix-run/react"
 
 export default function Component() {
   const data = useActionData()
+  const transition = useTransition()
+  console.log(transition)
+
+  const loadText = {
+    actionSubmission: "Enviando Formulario...",
+    actionReload: "Datos guardados, recargando formulario...",
+
+  }
+
+  const btntext = loadText[transition.type] || "Enviar"
   return (
     <div>
         <h1>useActionData</h1>
@@ -18,7 +28,7 @@ export default function Component() {
             <input type="number" name="years" />
             <br/>
 
-            <button type="submit">Enviar</button>
+            <button type="submit">{btntext}</button>
             <br/>
 
             <p>{data ? data.message : "Esperando Resultado..."}</p>

@@ -5,8 +5,7 @@ export default function Blog() {
   const posts = useLoaderData() 
   return (
     <div>
-      <h1>Estamos en el blog</h1>
-      <Link to='/blog/post'>Ir a los Post dinámicos</Link>
+      <h1>Estamos en el blog</h1> 
       <hr/>
       
       {posts.map(post => (
